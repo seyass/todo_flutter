@@ -7,9 +7,9 @@ from .models import Task
 
 
 
-class TaskViewSet(viewsets.MoelViewSet):
+class TaskViewSet(viewsets.ModelViewSet):
 
-    query_set =  Task.objects.filter(delete=False)
+    queryset =  Task.objects.filter(deleted=False)
     serializer_class = TaskSerializer
 
 

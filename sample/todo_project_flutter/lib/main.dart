@@ -109,7 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
          
          try{
              final response =
-                await http.get(Uri.parse('http://127.0.0.1:8000/todo/add_task/'));
+                await http.get(Uri.parse('http://127.0.0.1:8000/tasks/'));
       print(response.statusCode);
             if (response.statusCode == 200) {
               // Successfully received a response
