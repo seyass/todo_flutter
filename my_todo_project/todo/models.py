@@ -4,23 +4,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-# user's todo list
-class UserTodoList(models.Model):
+class Task(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+    completed = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateField(auto_now=True)
 
-    user = models.OneToOneField(User,on_delete=models.CASCADE) # user 
-    created_at = models.DateField(auto_now_add=True) # user todo list created
-    
-    def __str__(self):
-        return self.user.username
-
-# todolist items
-class TodoListItem(models.Model):
-
-    user = models.ForeignKey(UserTodoList,on_delete=models.CASCADE) # user
-    task = models.CharField(max_length=100) # task contents
-    created_at = models.DateField(auto_now_add=True) # date created
-    is_active = models.BooleanField(default=True) # for soft delete
-
-    def __str__(self):
-        return self.task
-
+    def __str__(self) -> str:
+        return self.title

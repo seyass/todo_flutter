@@ -1,28 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse
-from .models import TodoListItem
-
-# Create your views here.
-def home(request):
-    print('hi')
-    return JsonResponse({"message":'hellw world'})
+#from .models import TodoListItem
+from rest_framework import viewsets
+from .serializer import TaskSerializer
+from .models import Task
 
 
-# adding task function
-def add_task(request):
 
-    # adding task
-    if request.POST:
-        
-        task = request.POST['task']
+class TaskViewSet(viewsets.MoelViewSet):
 
-        # validating task content
-        if len(task.strip()) <= 2:
-            
-            # return failed respond
-            return JsonResponse({'message':'failed'})
-        TodoListItem.objects.create(task=task)
+    query_set =  Task.objects.filter(delete=False)
+    serializer_class = TaskSerializer
 
-        # return success message
-        return JsonResponse({'messsage':'success'})
-    return JsonResponse({'message':'add_task url'})
+
+
+
