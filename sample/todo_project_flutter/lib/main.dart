@@ -107,12 +107,13 @@ class _MyHomePageState extends State<MyHomePage> {
          
          try{
              final response =
-                await http.get(Uri.parse('http://127.0.0.1:8000/'));
+                await http.get(Uri.parse('http://127.0.0.1:8000/todo/add_task/'));
       print(response.statusCode);
             if (response.statusCode == 200) {
               // Successfully received a response
-              print('recieved')
-;              print('Response: ${response.body}');
+              print('recieved');
+              print('manda');
+              print('Response: ${response.body}');
             } else {
               // Something went wrong
               print('Failed to fetch data: ${response.statusCode}');

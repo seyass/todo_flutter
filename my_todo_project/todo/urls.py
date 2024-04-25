@@ -4,7 +4,9 @@ from . import views
 
 
 urlpatterns = [
-    path('',views.home,name='home'),
+    path('home/',views.home,name='home'), # url 
+    path('add_task/',views.add_task,name='add_task'), # url for adding task
+
 ]
 
 
