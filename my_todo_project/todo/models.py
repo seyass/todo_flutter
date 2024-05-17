@@ -9,8 +9,6 @@ class Task(models.Model):
     description = models.TextField(null=True, blank=True)
     completed = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateField(auto_now=True)
 
     def __str__(self) -> str:
         return self.title
